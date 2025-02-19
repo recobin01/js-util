@@ -31,7 +31,7 @@ function nhentaiImg(){
 	$button.onclick = () => { navigator.clipboard.writeText(src);}
 }
 
-function 3hentaiImg(){
+function _3hentaiImg(){
 	let $button = document.querySelector("#main-info a.btn")
 	let $img = document.querySelector("#main-cover img");
 
@@ -56,7 +56,7 @@ function todo(){
   if(window.location.hostname.indexOf("nhentai") >= 0){
       nhentaiImg()
   } else if(window.location.hostname.indexOf("3hentai") >= 0){
-      3hentaiImg()
+      _3hentaiImg()
   }
 }
 todo();
