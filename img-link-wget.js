@@ -47,34 +47,35 @@ function nhentaiImg(){
   $wget.onclick = () => { navigator.clipboard.writeText(src.replace("1t", `{1..${pages}}`))}
   $button.parentElement.appendChild($wget)
 
-  let $themall =  $("<a class='btn btn-secondary'>ThemAll Link</a>")
-  $themall.onclick = () => { navigator.clipboard.writeText(src.replace("1t", `[1:${pages}]`))}
+  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("1t", `[1:${pages}]`) + "'>ThemAll Link</a>")
+  //$themall.onclick = () => { navigator.clipboard.writeText(src.replace("1t", `[1:${pages}]`))}
   $button.parentElement.appendChild($themall)
 
 }
 
 function _3hentaiImg(){
-  let $button = document.querySelector("#main-info a.btn")
-  let $img = document.querySelector("#main-cover img");
-	
-  if(!$button || !$img || $img.src.indexOf("data") == 0){
-    setTimeout(todo, 2000)
-    return
-  }
-	
-  let doClick = (batch) => {
+	let $button = document.querySelector("#main-info a.btn")
+	let $img = document.querySelector("#main-cover img");
+
+	if(!$button || !$img || $img.src.indexOf("data") == 0){
+    	setTimeout(todo, 2000)
+    	return
+	}
+
     	let src = normalize($img.src)
     	let pages = Array.prototype.filter.call(document.querySelectorAll("#main-info>div"), (div) => div.textContent.indexOf("Pages") > 0)[0].children[0].textContent.trim()
-    	let link = src.replace("cover", batch == "wget" ? `{1..${pages}}` : `[1:${pages}]`)
+    	src = src.replace("cover", batch == "wget" ? `{1..${pages}}` : `[1:${pages}]`)
+
+	let doClick = (batch) => {
     	navigator.clipboard.writeText(link);
-  }
+	}
 
   let $wget = $("<a class='btn btn-secondary'>Wget Link</a>")
-  $wget.onclick = () => { doClick("wget")}
+  $wget.onclick = () => { navigator.clipboard.writeText(src.replace("cover", `{1..${pages}}`))}
   $button.parentElement.appendChild($wget)
 
-  let $themall =  $("<a class='btn btn-secondary'>ThemAll Link</a>")
-  $themall.onclick = () => { doClick("themall")}
+  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("cover", `[1:${pages}]`) + "'>ThemAll Link</a>")
+  //$themall.onclick = () => { doClick("themall")}
   $button.parentElement.appendChild($themall)
 
 }
