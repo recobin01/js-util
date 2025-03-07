@@ -54,17 +54,16 @@ function nhentaiImg(){
 }
 
 function _3hentaiImg(){
-	let $button = document.querySelector("#main-info a.btn")
-	let $img = document.querySelector("#main-cover img");
+  let $button = document.querySelector("#main-info a.btn")
+  let $img = document.querySelector("#main-cover img");
 
-	if(!$button || !$img || $img.src.indexOf("data") == 0){
+  if(!$button || !$img || $img.src.indexOf("data") == 0){
     	setTimeout(todo, 2000)
     	return
-	}
+  }
 
-    	let src = normalize($img.src)
-    	let pages = Array.prototype.filter.call(document.querySelectorAll("#main-info>div"), (div) => div.textContent.indexOf("Pages") > 0)[0].children[0].textContent.trim()
-    	src = src.replace("cover", batch == "wget" ? `{1..${pages}}` : `[1:${pages}]`)
+  let src = normalize($img.src)
+  let pages = Array.prototype.filter.call(document.querySelectorAll("#main-info>div"), (div) => div.textContent.indexOf("Pages") > 0)[0].children[0].textContent.trim()
 
   let $wget = $("<a class='btn btn-secondary'>Wget Link</a>")
   $wget.onclick = () => { navigator.clipboard.writeText(src.replace("cover", `{1..${pages}}`))}
