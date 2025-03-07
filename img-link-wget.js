@@ -66,10 +66,6 @@ function _3hentaiImg(){
     	let pages = Array.prototype.filter.call(document.querySelectorAll("#main-info>div"), (div) => div.textContent.indexOf("Pages") > 0)[0].children[0].textContent.trim()
     	src = src.replace("cover", batch == "wget" ? `{1..${pages}}` : `[1:${pages}]`)
 
-	let doClick = (batch) => {
-    	navigator.clipboard.writeText(link);
-	}
-
   let $wget = $("<a class='btn btn-secondary'>Wget Link</a>")
   $wget.onclick = () => { navigator.clipboard.writeText(src.replace("cover", `{1..${pages}}`))}
   $button.parentElement.appendChild($wget)
