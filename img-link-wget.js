@@ -31,7 +31,7 @@ function nhentaiImg(){
 	let $button = document.getElementById("download")
 	let $img = document.querySelector("#thumbnail-container img");
 
-	if(!$button || !$img || $img.src.indexOf("data") == 0){
+	if(!$button || !$img || !$img.src || $img.src.indexOf("data") == 0){
     	setTimeout(todo, 2000)
     	return
 	}
@@ -57,7 +57,7 @@ function _3hentaiImg(){
   let $button = document.querySelector("#main-info a.btn")
   let $img = document.querySelector("#main-cover img");
 
-  if(!$button || !$img || $img.src.indexOf("data") == 0){
+  if(!$button || !$img || !$img.src || $img.src.indexOf("data") == 0){
     	setTimeout(todo, 2000)
     	return
   }
