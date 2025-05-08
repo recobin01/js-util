@@ -26,7 +26,7 @@ function normalize(src){
   let ext = src.substring(idx)
   if(src.endsWith(ext + ext))
     return src.substring(0, idx)
-  if(src.endsWith("jpg" + ext)
+  if(src.endsWith("jpg" + ext))
      return src.substring(0, idx - 4) + ext
   return src
 }
