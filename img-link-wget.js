@@ -2,7 +2,7 @@
 // @name        Image Link wget
 // @namespace   Violentmonkey Scripts
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @include     https://nhentai.net/g/*
 // @include     https://3hentai.net/d/*
 // @include     https://www.hentai.name/g/*
