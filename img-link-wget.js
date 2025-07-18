@@ -9,7 +9,6 @@
 // @author      -
 // @description 2/19/2025, 3:08:21 PM
 // @downloadURL https://raw.githubusercontent.com/recobin01/js-util/refs/heads/main/img-link-wget.js
-// @updateURL https://raw.githubusercontent.com/recobin01/js-util/refs/heads/main/img-link-wget.js
 // ==/UserScript==
 
 
