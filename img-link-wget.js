@@ -2,7 +2,7 @@
 // @name        Image Link wget
 // @namespace   Violentmonkey Scripts
 // @grant       none
-// @version     1.1
+// @version     1.1.0.1
 // @include     https://nhentai.net/g/*
 // @include     https://3hentai.net/d/*
 // @include     https://www.hentai.name/g/*
@@ -38,7 +38,7 @@ function nhentaiImg(){
     	return
 	}
 
-	let pages = Array.prototype.filter.call(document.querySelectorAll("section#tags>div"), (div) => div.textContent.indexOf("Pages") > 0)[0].children[0].textContent.trim()
+	let pages = Array.prototype.filter.call(document.querySelectorAll("section#tags>div"), (div) => div.textContent.indexOf("Pages") >= 0)[0].children[0].textContent.trim()
 
 	$button.classList.remove("btn-disabled");
 	let src = normalize($img.src)
@@ -48,7 +48,7 @@ function nhentaiImg(){
   $wget.onclick = () => { navigator.clipboard.writeText(src.replace("1t", `{1..${pages}}`))}
   $button.parentElement.appendChild($wget)
 
-  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("1t", `[1:${pages}]`) + "'>ThemAll [English]</a>")
+  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("1t", `[1:${pages}]`) + "'>[English]</a>")
   //$themall.onclick = () => { navigator.clipboard.writeText(src.replace("1t", `[1:${pages}]`))}
   $button.parentElement.appendChild($themall)
 
@@ -64,13 +64,13 @@ function _3hentaiImg(){
   }
 
   let src = normalize($img.src)
-  let pages = Array.prototype.filter.call(document.querySelectorAll("#main-info>div"), (div) => div.textContent.indexOf("Pages") > 0)[0].children[0].textContent.trim()
+  let pages = Array.prototype.filter.call(document.querySelectorAll("#main-info>div"), (div) => div.textContent.indexOf("Pages") >= 0)[0].children[0].textContent.trim()
 
   let $wget = $("<a class='btn btn-secondary'>Wget Link</a>")
   $wget.onclick = () => { navigator.clipboard.writeText(src.replace("cover", `{1..${pages}}`))}
   $button.parentElement.appendChild($wget)
 
-  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("cover", `[1:${pages}]`) + "'>ThemAll [English]</a>")
+  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("cover", `[1:${pages}]`) + "'>[English]</a>")
   //$themall.onclick = () => { doClick("themall")}
   $button.parentElement.appendChild($themall)
 
@@ -85,7 +85,7 @@ function hentaiNameImg(){
     	return
 	}
 
-	let pages = Array.prototype.filter.call(document.querySelectorAll("div#info div"), (div) => div.textContent.indexOf("pages") > 0)[0].textContent
+	let pages = Array.prototype.filter.call(document.querySelectorAll("div#info div"), (div) => div.textContent.indexOf("pages") >= 0)[0].textContent
 	pages = parseInt(pages)
 
 	let src = normalize($img.src)
@@ -94,7 +94,7 @@ function hentaiNameImg(){
   $wget.onclick = () => { navigator.clipboard.writeText(src.replace("poster", `{1..${pages}}`))}
   $buttons.appendChild($wget)
 
-  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("poster", `[1:${pages}]`) + "'>ThemAll [English] </a>")
+  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("poster", `[1:${pages}]`) + "'>[English]</a>")
   //$themall.onclick = () => { navigator.clipboard.writeText(src.replace("1t", `[1:${pages}]`))}
   $buttons.appendChild($themall)
 
