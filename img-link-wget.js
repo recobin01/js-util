@@ -42,7 +42,7 @@ function nhentaiImg(){
 
 	$button.classList.remove("btn-disabled");
 	let src = normalize($img.src)
-	src = src.replace(/t\d\./,"i1.")
+	src = src.replace(/t\d\./,"i2.")
 
   let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("1t", `[1:${pages}]`) + "'>[English]</a>")
   //$themall.onclick = () => { navigator.clipboard.writeText(src.replace("1t", `[1:${pages}]`))}
