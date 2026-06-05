@@ -98,4 +98,4 @@ function todo(){
       hentaiNameImg()
   }
 }
-todo();
+setTimeout(todo, 4000)
