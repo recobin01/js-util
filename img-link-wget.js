@@ -2,7 +2,7 @@
 // @name        Images Link
 // @namespace   Violentmonkey Scripts
 // @grant       none
-// @version     1.1.0.2
+// @version     1.1.0.3
 // @include     https://nhentai.net/g/*
 // @include     https://3hentai.net/d/*
 // @include     https://nhentai.to/g/*
@@ -72,25 +72,26 @@ function nhentaiToImg(){
 }
 
 
-function _3hentaiImg(){
-  let $button = document.querySelector("#main-info a.btn")
-  let $img = document.querySelector("#main-cover img");
 
-  if(!$button || !$img || !$img.src || $img.src.indexOf("data") == 0){
+function _3hentaiImg(){
+  let $img = document.querySelector("#main-info a.main-cover img");
+  let $pages = Array.prototype.filter.call(document.querySelectorAll("#main-info div.tag-container"), (div) => div.textContent.indexOf("Pages") >= 0)[0]
+
+  if(!$pages || !$img || !$img.src || $img.src.indexOf("data") == 0){
+    console.log('wait pages', $pages, $img.src)
     	setTimeout(todo, 2000)
     	return
   }
 
   let src = normalize($img.src)
-  let pages = Array.prototype.filter.call(document.querySelectorAll("#main-info>div"), (div) => div.textContent.indexOf("Pages") >= 0)[0].children[0].textContent.trim()
+  let pages = $pages.children[0].textContent.trim()
 
- 
+ console.log(pages)
   let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("cover", `[1:${pages}]`) + "'>[English]</a>")
   //$themall.onclick = () => { doClick("themall")}
-  $button.parentElement.appendChild($themall)
+  $pages.parentElement.appendChild($themall)
 
 }
-
 function hentaiNameImg(){
 	let $buttons = document.querySelector("div#info div.buttons");
 	let $img = document.querySelector("div#cover a img");
