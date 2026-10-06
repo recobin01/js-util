@@ -2,9 +2,10 @@
 // @name        Images Link
 // @namespace   Violentmonkey Scripts
 // @grant       none
-// @version     1.1.0.1
+// @version     1.1.0.2
 // @include     https://nhentai.net/g/*
 // @include     https://3hentai.net/d/*
+// @include     https://nhentai.to/g/*
 // @include     https://www.hentai.name/g/*
 // @author      -
 // @description 2/19/2025, 3:08:21 PM
@@ -49,6 +50,27 @@ function nhentaiImg(){
   $button.parentElement.appendChild($themall)
 
 }
+function nhentaiToImg(){
+	let $button = document.getElementById("download")
+	let $img = document.querySelector("#cover img");
+
+	if(!$button || !$img || !$img.src || $img.src.indexOf("data") == 0){
+    	setTimeout(todo, 2000)
+    	return
+	}
+
+	let pages = Array.prototype.filter.call(document.querySelectorAll("section#tags>div"), (div) => div.textContent.indexOf("Pages") >= 0)[0].children[0].textContent.trim()
+
+	//$button.classList.remove("btn-disabled");
+	let src = normalize($img.src)
+	//src = src.replace(/t\d\./,"i2.")
+
+  let $themall =  $("<a class='btn btn-secondary' href='" + src.replace("1t", `[1:${pages}]`) + "'>[English]</a>")
+  //$themall.onclick = () => { navigator.clipboard.writeText(src.replace("cover", `[1:${pages}]`))}
+  $button.parentElement.appendChild($themall)
+
+}
+
 
 function _3hentaiImg(){
   let $button = document.querySelector("#main-info a.btn")
@@ -90,12 +112,14 @@ function hentaiNameImg(){
 
 }
 function todo(){
-  if(window.location.hostname.indexOf("nhentai") >= 0){
+  if(window.location.hostname.indexOf("nhentai.net") >= 0){
       nhentaiImg()
   } else if(window.location.hostname.indexOf("3hentai") >= 0){
       _3hentaiImg()
   } else if(window.location.hostname.indexOf("hentai.name") >= 0){
       hentaiNameImg()
+  } else if(window.location.hostname.indexOf("nhentai.to") >= 0){
+      nhentaiToImg()
   }
 }
 setTimeout(todo, 4000)
